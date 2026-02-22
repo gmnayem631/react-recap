@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Players from "./Players";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const players = [
+    "Warner",
+    "Bennet",
+    "Carlos",
+    "Angelo",
+    "Joe",
+    "Kane",
+    "Quinton",
+  ];
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>React Core Concepts</h1>
+      <Developer name="hasin" tech="php" age="25"></Developer>
+      <Developer name="sumit" tech="JavaScript"></Developer>
+      {players.map((player) => {
+        return <Players player={player}></Players>;
+      })}
     </>
-  )
+  );
 }
 
-export default App
+function Developer(props) {
+  console.log(props);
+  return (
+    <div className="developer">
+      <p style={{ fontSize: "24px", fontWeight: "bold" }}>
+        Developer: {props.name}
+      </p>
+      <p>Tech: {props.tech}</p>
+      <p>Tech: {props.age}</p>
+    </div>
+  );
+}
+
+export default App;
