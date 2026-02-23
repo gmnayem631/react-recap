@@ -1,38 +1,19 @@
 import "./App.css";
-import Players from "./Players";
 
 function App() {
-  const players = [
-    "Warner",
-    "Bennet",
-    "Carlos",
-    "Angelo",
-    "Joe",
-    "Kane",
-    "Quinton",
-  ];
+  const handleClick = () => {
+    alert("clicked");
+  };
+  const handleClick2 = (num) => {
+    const newNum = num + 5;
+    alert(newNum);
+  };
   return (
     <>
       <h1>React Core Concepts</h1>
-      <Developer name="hasin" tech="php" age="25"></Developer>
-      <Developer name="sumit" tech="JavaScript"></Developer>
-      {players.map((player) => {
-        return <Players player={player}></Players>;
-      })}
+      <button onClick={handleClick}>Click Here</button>
+      <button onClick={() => handleClick2(30)}>Add 5</button>
     </>
-  );
-}
-
-function Developer(props) {
-  console.log(props);
-  return (
-    <div className="developer">
-      <p style={{ fontSize: "24px", fontWeight: "bold" }}>
-        Developer: {props.name}
-      </p>
-      <p>Tech: {props.tech}</p>
-      <p>Tech: {props.age}</p>
-    </div>
   );
 }
 
