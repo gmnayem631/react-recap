@@ -1,18 +1,30 @@
+import { Suspense } from "react";
 import "./App.css";
+import Batsman from "./Batsman";
+import Bowler from "./Bowler";
+import Users from "./Users";
+import Posts from "./Posts";
+
+const fetchUsers = fetch("https://jsonplaceholder.typicode.com/users").then(
+  (response) => response.json(),
+);
+
+const fetchPosts = fetch("https://jsonplaceholder.typicode.com/posts").then(
+  (response) => response.json(),
+);
 
 function App() {
-  const handleClick = () => {
-    alert("clicked");
-  };
-  const handleClick2 = (num) => {
-    const newNum = num + 5;
-    alert(newNum);
-  };
   return (
     <>
       <h1>React Core Concepts</h1>
-      <button onClick={handleClick}>Click Here</button>
-      <button onClick={() => handleClick2(30)}>Add 5</button>
+      {/* <Batsman></Batsman> */}
+      {/* <Bowler></Bowler> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Users fetchUsers={fetchUsers}></Users>
+      </Suspense>
+      <Suspense fallback={<div>Posts Loading...</div>}>
+        <Posts fetchPosts={fetchPosts}></Posts>
+      </Suspense>
     </>
   );
 }
